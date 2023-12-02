@@ -1,3 +1,5 @@
+
+
 def check_color(colors):
     match colors[1]:
         case "blue":
@@ -29,8 +31,8 @@ def is_game_valid(game):
 
 
 def part_1():
-    result = 0
     file = open("input.txt", "r")
+    result = 0
     for line in file.readlines():
         line = line.replace('\n', '')
         line = str.split(line, ": ")
@@ -51,14 +53,34 @@ def part_1():
 
 
 def part_2():
-    pass
+    file = open("input.txt", "r")
+    result = 0
+    for line in file.readlines():
+        colors = {
+            "red":      0,
+            "blue":     0,
+            "green":    0
+        }
+        row_result = 1
+        line = line.replace('\n', '')
+        line = str.split(line, ": ")
+        value = line[1]
+        games = str.split(value, ";")
+        for game in games:
+            game = str.split(game, ",")
+            for color in game:
+                amount, color = color.strip().split(" ")
+                if int(amount) > int(colors[color]):
+                    colors[color] = amount
+        for i in colors:
+            row_result *= int(colors[i])
+        result += row_result
+    file.close()
+    return result
 
 
 if __name__ == '__main__':
     print(part_1())
     print(part_2())
-    # 4494 too high
-    # 4682 too high
-    # 368 too low
 
 
