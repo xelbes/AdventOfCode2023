@@ -24,6 +24,7 @@ def convert_strings_into_numbers(line):
             empty = [*new_string]
     return new_string
 
+
 def main():
     result = 0
     for line in file.readlines():
