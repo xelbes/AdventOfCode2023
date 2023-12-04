@@ -1,10 +1,12 @@
 def data_cleaning(file, split_char):
+    card_numbers = []
     lines = []
     for line in file.readlines():
         line = line.replace("\n", "")
         card_nr, line = line.split(split_char)
+        card_numbers.append(card_nr)
         lines.append(line)
-    return lines
+    return card_numbers, lines
 
 
 def split_values_on_input(line):
@@ -18,7 +20,7 @@ def split_values_on_input(line):
 def part_01():
     file = open("input.txt", "r")
     result = 0
-    lines = data_cleaning(file, ":")
+    card_numbers, lines = data_cleaning(file, ":")
     for line in lines:
         cnt = 0
         lotto_nr, your_nr = split_values_on_input(line)
@@ -34,6 +36,12 @@ def part_01():
 
 def part_02():
     file = open("input.txt", "r")
+    card_numbers, lines = data_cleaning(file, ":")
+    new_array = []
+    for index, line in enumerate(lines):
+        new_array.append([[card_numbers[index]], [lines[index]]])
+    print(new_array)
+    # print(card_numbers, lines)
     result = 0
     print(result)
     file.close()
