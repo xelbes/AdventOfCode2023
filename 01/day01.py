@@ -11,6 +11,17 @@ numbersAsStrings = {
     'eight':    '8',
     'nine':     '9'}
 
+numbersAsStringsCheat = {
+    'one':      'o1e',
+    'two':      't2o',
+    'three':    't3ree',
+    'four':     'f4ur',
+    'five':     'f5ve',
+    'six':      's6x',
+    'seven':    's7ven',
+    'eight':    'e8ght',
+    'nine':     'n9ne'}
+
 
 def convert_strings_into_numbers(line):
     string_array = [*line]
@@ -20,7 +31,7 @@ def convert_strings_into_numbers(line):
         empty.append(char)
         new_string = str.join('', empty)
         for number in numbersAsStrings.keys():
-            new_string = new_string.replace(number, numbersAsStrings[number])
+            new_string = new_string.replace(number, numbersAsStringsCheat[number])
             empty = [*new_string]
     return new_string
 
